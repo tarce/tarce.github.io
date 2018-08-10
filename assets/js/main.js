@@ -12,9 +12,9 @@
 		$footer = $('#footer'),
 		$main = $('#main'),
 		settings = {
-
-			// Parallax background effect?
-				parallax: true,
+            
+            // Parallax background effect?
+            parallax: true,
 
 			// Parallax factor (lower = more intense, higher = less intense).
 				parallaxFactor: 20
