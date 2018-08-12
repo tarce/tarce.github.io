@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
+html {
+	margin: 0;
+	padding: 0;
+	}
+body {
+      color: #325050;
+      background: #fff;
+      font-family: 'Libre Baskerville', sans-serif;
+      font-size: 200%;
+  }
+p {
+	margin-top: 0;
+	text-align: center;
+	}
+h1 {
+	font: italic normal 1.4em georgia, sans-serif;
+	letter-spacing: 1px;
+	margin-bottom: 0;
+	color: #7D775C;
+  padding-bottom: 20px
+	}
+</style>
+</head>
+
+<body>
+
+<div style="text-align: center">
+  <h1>Disease Simulator</h1>
+  <p>Push the button to advance or reset.</p>
+  <button class="button"; onclick="advanceStage()">AdvanceStage</button>
+  <div class="divider"/></div>
+  <button class="button"; onclick="reset()">Reset</button>
+  <p></p>
+  <p id="month">Month:</p>
+  <p id="students"></p>
+</div>
+
+
+
+<script>
+
+var month = 1;
+
+var initialized = false;
+
+var names = [  "Fabricio Aguilar",
+               "Katrina Alvarez",
+               "Michelle Avila",
+               "Patricia Aziz",
+               "Tracy Cherubin",
+               "Marion Couzens",
+               "Erik Feldtmann",
+               "Larissa Flores",
+               "Judi Fusco",
+               "Daniel Gonzalez",
+               "Christopher Gray",
+               "Daniel Hernandez",
+               "Catherine Ice",
+               "Mary Ice",
+               "Kaley Laveigne",
+               "Raven Mccall",
+               "Joshua Norris",
+               "Jeremiah Owens",
+               "Nicole Pineda",
+               "Amanda Rodriguez",
+               "Ivanna Ward",
+               "Nora Wartan"];
+
+var students = [];
+
+function reset()
+{
+  students = [];
+  month = 1;
+  initialized = false;
+  document.getElementById("students").innerHTML = "";
+  document.getElementById("month").innerHTML = "Month: ";
+}
+
+function Student(name) {
+  this.name = name;
+  this.diseased = false;
+  this.accountedFor = false;
+}
+
+function advanceStage()
+{
+  document.getElementById("students").innerHTML = "";
+  if (initialized) {
+    for (let s of students) {
+      chanceDiseased = Math.floor((Math.random() * 3) + 1);
+      if (s.diseased == false && chanceDiseased == 1)
+      {
+        s.diseased = true;
+      }
+    }
+    printDiseased();
+  }
+  else {
+    initStudents()
+    initialized = true;
+    printDiseased();
+  }
+}
+
+function printDiseased()
+{
+
+  count = 0;
+
+  document.getElementById("month").innerHTML = "Month: " + month + "<br />";
+  month += 1;
+
+  for (let s of students) {
+    if (s.diseased && !s.accountedFor) {
+      count += 1;
+      document.getElementById("students").innerHTML += s.name + "<br />";
+      s.accountedFor = true;
+    }
+  }
+
+  if (count == 0) {
+    document.getElementById("students").innerHTML = "No one diseaed this month. <br />";
+  }
+
+}
+
+function initStudents() {
+  for (let value of names) {
+    students.push(new Student(value));
+  }
+  initDiseased = Math.floor((Math.random() * names.length) + 1);
+  students[initDiseased].diseased = true;
+}
+
+</script>
+
+</body>
+</html>
