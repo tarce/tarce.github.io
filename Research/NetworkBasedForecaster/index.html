@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CAP5510 | Project Proposal</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/personal/strata/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="/index.html" class="image avatar"><img src="/personal/images/avatar.jpeg" alt="" /></a>
+                    <h1>
+                        <strong>I am <a href="/index.html">Terek</a></strong>, a PhD student<br />
+                        3D Audio, VR/AR researcher<br />
+                        @ UF <a href="http://kylamcmullen.com/yunhaow/">SoundPad Lab</a>.
+                    </h1>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>CAP5510 | Project Proposal</h2>
+                            <p>A method for analyzing numerical stability of genetic classifiers.</p>
+						</header>
+                        							<ul class="actions small">
+								<li><a href="https://github.com/tarce/Genetic-Classifier-Stability" class="button primary small">GitHub Repo</a></li>
+								<li><a href="paper.pdf" class="button small">Results Paper</a></li>
+                                <li><a href="slides.pdf" class="button small">Slides</a></li>
+							</ul>
+					</section>
+
+				<!-- Two -->
+					<section id="two">
+							<header>
+								<h5>Intoduction</h5>
+							</header>
+                            <p>Perturbations can be introduced into gene expression data in a variety of ways - some natural (e.g. minor expression differences due to individual genomic events) and some artificial (e.g. instrumentation error).  In this study, a method for analyzing the <a href="http://mathworld.wolfram.com/NumericalStability.html">numerical stability</a> of genetic classifiers will be developed. The developed method will use a divide and conquer approach, along with a genetic algorithm (GA) to determine scores for each classifier, allowing them to be ranked from most to least robust. Robustness refers to the missclassification rate, with more robust algorithms having a smaller misclassificatin rate.</p>
+                            <header>
+								<h5>Background</h5>
+							</header>
+                            <p>Three classifiers will be analyzed: kNN, linear SVM and NBC.  Briefly, kNN classifies samples based on similarity scores of its <i>k</i>-nearest neighbors.  Linear SVM is a binary classifier which can be adapted for multi-class datsets.  It separates the given data points into their correct classes by constructing a hyperplane that separates the classes  with the maximum margin.  NBC is a correlation-based classifier that constructs a theoretical expression for each sample of each class, assigning the sample to the class with the closest matching expression.</p>
+
+							<header>
+								<h5>Methods</h5>
+							</header>
+                            <p>First, the kNN, SVM and NBC classifiers will be implemented. <a href="http://scikit-learn.org/stable/modules/svm.html">Linear SVM</a> and <a href="http://scikit-learn.org/stable/modules/neighbors.html">kNN</a> are readily available for use in packages. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4214593/">NBC</a> can be found described in the original paper and will be implemented. Second, Chi2, and random feature selection will be implemented.<a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.chi2.html">Chi2</a> is available in a package, while the random method will be implemented. Third, I will implement the stability analysis method according to the following rules.</p>
+                            <p>Given a user specified robustness and a number of classifiers, the method will order the classifiers from most to least robust.  A divide and conquer method will be used to select the number of features (<i>k</i>) to be altered in a test sample. For each selected <i>k</i>, a genetic algorithm will be used to select <i>k</i> features (genes) which give the greatest missclassification rate.  This method will be repeated until <i>k</i> is minimized for the user defined robustness.</p>
+                            <p>The algorithms will be ranked according to <i>k</i>, with smaller k being ranked higher. Additionally, the GA algorithm will be compared to 10-fold random selection and Chi2 feature selection, with robustness scores for a given <i>k</i> being used to compare them. All implementation will be completed using a mix of Python and C++.</p>
+							<header>
+								<h5>Data</h5>
+							</header>
+                            <p>The following datasets will be used in the analysis: <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE19804">Lung Cancer</a>, <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE27562">Breast Cancer</a>, <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE39582">Colon Cancer</a>.</p>
+							<header>
+								<h5>References</h5>
+							</header>
+                            <p><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4214593/">[1]</a>, <a href="http://www.researchgate.net/profile/Rudy_Setiono/publication/3619899_Chi2_feature_selection_and_discretization_of_numeric_attributes/links/00b49517a0cf0d1069000000.pdf">[2]</a>, <a href="https://cs.gmu.edu/~eclab/papers/fuzzy.pdf">[3]</a>, <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3599581/">[4]</a>, <a href="http://arxiv.org/abs/1001.0887">[5]</a></p>
+
+					</section>
+                
+				<!-- Three -->
+					<section id="three">
+                        <ul class="actions fit">
+                            <li><a href="/index.html" class="button primary fit">Home</a></li>
+                        </ul>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://github.com/tarce" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://www.youtube.com/channel/UCWLiz6zJgB-OBo3C0RgCIQw?" class="icon fa-youtube-play"><span class="label">Youtube</span></a></li>
+						<li><a href="mailto:tra04@ufl.edu" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+                        <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Terek Arce</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/personal/strata/js/jquery.min.js"></script>
+			<script src="/personal/strata/js/jquery.poptrox.min.js"></script>
+			<script src="/personal/strata/js/browser.min.js"></script>
+			<script src="/personal/strata/js/breakpoints.min.js"></script>
+			<script src="/personal/strata/js/util.js"></script>
+			<script src="/personal/strata/js/main.js"></script>
+
+	</body>
+</html>
