@@ -62,4 +62,4 @@ def progressBar2():
   pb.set_description('  1...')
   time.sleep(2)
   pb.update(1)
-  pb.set_description('  Launch Sucess...')
+  pb.set_description('  Launch Success...')
